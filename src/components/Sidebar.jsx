@@ -14,9 +14,8 @@ export default function Sidebar( {initialMenuItems} ) {
     setNewMenuItem("")
     console.log("Added menu item")
   }, [newMenuItem, menuItems])
-  const filteredMenuItems = menuItems.filter(item =>
-    item.toLowerCase().includes(filter.toLowerCase())
-  )
+  const regex = new RegExp(filter, "i")
+  const filteredMenuItems = menuItems.filter(item => regex.test(item))
   return (
     <div>
       <input
