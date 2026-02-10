@@ -18,6 +18,11 @@ export default function Sidebar( {initialMenuItems} ) {
   const filteredMenuItems = menuItems.filter(item => regex.test(item))
   return (
     <div>
+      <ul>
+        {filteredMenuItems.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
       <input
         type="text"
         id="newMenuItemValue"
@@ -36,11 +41,6 @@ export default function Sidebar( {initialMenuItems} ) {
         onChange={(event) => setFilter(event.target.value)}
         placeholder="Filter by..."
       ></input>
-      <ul>
-        {filteredMenuItems.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
     </div>
   )
 }
